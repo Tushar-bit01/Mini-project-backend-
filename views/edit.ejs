@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit Post</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fff1eb, #ace0f9);
+      color: #333;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      color: #2d00f7;
+      margin-bottom: 50px;
+      font-weight: 700;
+    }
+
+    .edit-box {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 30px;
+      max-width: 720px;
+      margin: auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .info {
+      margin-bottom: 25px;
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 14px;
+      border: 1px solid #ccc;
+      background-color: #f7f7f7;
+      font-family: inherit;
+      color: #333;
+      resize: vertical;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: #00bcd4;
+      box-shadow: 0 0 8px rgba(0, 188, 212, 0.2);
+    }
+
+    button {
+      align-self: center;
+      background: #00bcd4;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 5px 12px rgba(0, 188, 212, 0.2);
+    }
+
+    button:hover {
+      background: #008c9e;
+    }
+  </style>
+</head>
+<body>
+  <h1>Edit Post</h1>
+
+  <div class="edit-box">
+    <div class="info">
+      <p><strong>Post ID:</strong> <%= post.id %></p>
+      <p><strong>Username:</strong> @<%= post.username %></p>
+    </div>
+
+    <form method="POST" action="/posts/<%= post.id %>?_method=PATCH">
+      <textarea name="content"><%= post.content %></textarea>
+      <button>Update Post</button>
+    </form>
+  </div>
+</body>
+</html>
